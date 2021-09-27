@@ -13,7 +13,7 @@ In your code only export.ahk needs to be included:
 ```autohotkey
 #Include %A_ScriptDir%\node_modules
 #Include expect\export.ahk
-expect := new unit()
+expect := new expect()
 
 testVar := 2 + 2
 expect.equal(testVar, 4)
