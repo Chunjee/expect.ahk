@@ -10,6 +10,7 @@ expect.label("vars, arrays, objects")
 expect.test("hello", "hello")
 expect.test(["hello"], ["hello"])
 expect.test({"key": "value"}, {"key": "value"})
+expect.test(true, true, "with note")
 
 
 expect.group(".equal")

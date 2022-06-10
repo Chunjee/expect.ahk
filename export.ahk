@@ -17,7 +17,7 @@ class expect {
 	}
 
 
-	test(param_actual:="_Missing_Parameter_", param_expected:="_Missing_Parameter_") {
+	test(param_actual:="_Missing_Parameter_", param_expected:="_Missing_Parameter_", param_note:="") {
 		if (A_IsCompiled) {
 			return 0
 		}
@@ -33,7 +33,7 @@ class expect {
 		; create
 		this.testTotal++
 		if (param_actual != param_expected) {
-			this._logTestFail(param_actual, param_expected)
+			this._logTestFail(param_actual, param_expected, param_note)
 			return false
 		} else {
 			this._stdOut("ok " this.testTotal)
@@ -68,49 +68,52 @@ class expect {
 	}
 
 
-	true(param_actual:="_Missing_Parameter_") {
+	true(param_actual:="_Missing_Parameter_", param_note:="") {
 		if (A_IsCompiled) {
 			return 0
 		}
 
 		; create
-		this.test(param_actual, true)
+		this.test(param_actual, true, param_note)
 		return false
 	}
 
 
-	false(param_actual:="_Missing_Parameter_") {
+	false(param_actual:="_Missing_Parameter_", param_note:="") {
 		if (A_IsCompiled) {
 			return 0
 		}
 
 		; create
 		if (param_actual == false) {
-			this.test("false", "false")
+			this.test("false", "false", param_note)
 			return true
 		}
 		if (param_actual == true){
-			this.test("true", "false")
+			this.test("true", "false", param_note)
 			return false
 		}
-		this.test(param_actual, "true")
+		this.test(param_actual, "true", param_note)
 		return false
 	}
 
 
-	equal(param_actual:="_Missing_Parameter_", param_expected:="_Missing_Parameter_") {
+	equal(param_actual:="_Missing_Parameter_", param_expected:="_Missing_Parameter_", param_note:="") {
 		if (A_IsCompiled) {
 			return 0
 		}
 
 		; create
-		return this.test(param_actual, param_expected)
+		return this.test(param_actual, param_expected, param_note)
 	}
 
 
-	notEqual(param_actual:="_Missing_Parameter_", param_expected:="_Missing_Parameter_") {
+	notEqual(param_actual:="_Missing_Parameter_", param_expected:="_Missing_Parameter_", param_note:="") {
 		if (A_IsCompiled) {
 			return 0
+		}
+		if (param_note == "") {
+			param_note := "Expected to be different"
 		}
 
 		; prepare
@@ -123,8 +126,7 @@ class expect {
 			this.successTotal++
 			return true
 		} else {
-			this._logTestFail(param_actual, param_expected, "They were Expected to be DIFFERENT")
-
+			this._logTestFail(param_actual, param_expected, param_note)
 			return false
 		}
 	}
@@ -156,7 +158,6 @@ class expect {
 		}
 		this._stdOut("# " this._buildReport())
 		this._stdOut("1.." this.testTotal)
-		msgbox, % this._buildReport()
 		return true
 	}
 
@@ -181,7 +182,7 @@ class expect {
 			l_options := 64
 		}
 		; this._stdOut(msgreport)
-		msgbox, % l_options, unit-testing.ahk, % msgreport
+		msgbox, % l_options, expect.ahk, % msgreport
 		return msgreport
 	}
 
@@ -266,8 +267,8 @@ class expect {
 
 	_stdOut(output:="") {
 		try {
-			DllCall("AttachConsole", "int", -1) || DllCall("AllocConsole")
-			FileAppend, % output "`n", CONOUT$
+			DllCall("AttachConsole", "int", -1)
+			FileAppend, % "`n" output, CONOUT$
 			DllCall("FreeConsole")
 		} catch error {
 			return false
