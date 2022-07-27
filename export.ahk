@@ -32,13 +32,25 @@ class expect {
 
 		; create
 		this.testTotal++
-		if (param_actual != param_expected) {
-			this._logTestFail(param_actual, param_expected, param_note)
-			return false
+		if (A_StringCaseSense = "Off") {
+			toggleCaseSenseOff := true
 		} else {
+			toggleCaseSenseOff := false
+		}
+		StringCaseSense, On
+		if (param_actual == param_expected) {
 			this._stdOut("ok " this.testTotal)
 			this.successTotal++
+			if (toggleCaseSenseOff) {
+				StringCaseSense, Off
+			}
 			return true
+		} else {
+			this._logTestFail(param_actual, param_expected)
+			if (toggleCaseSenseOff) {
+				StringCaseSense, Off
+			}
+			return false
 		}
 	}
 
