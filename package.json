@@ -1,6 +1,6 @@
 {
 	"name": "expect.ahk",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "expect.ahk is a testing package to perform and report on tests for AutoHotkey projects. It is Test Anything Protocol (TAP) compliant",
 	"main": "export.ahk",
 	"repository": {

@@ -1,5 +1,5 @@
 # expect.ahk
-A unit test package for AutoHotkey
+A Test Anything Protocol (TAP) compliant unit testing package for AutoHotkey
 
 ## Installation
 
