@@ -171,10 +171,10 @@ class expect {
 			return 0
 		}
 
-		this.groupVar := param
+		this.groupVar := param_label
 		this.labelVar := ""
 		this.lastlabel := "_"
-		this._stdOut("# " param)
+		this._stdOut("# " param_label)
 		return
 	}
 
