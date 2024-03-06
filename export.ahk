@@ -183,7 +183,7 @@ class expect {
 	/**
 	* labels the following tests for logs and readability
 	* @param {string} param_label - A human readable label for the next test(s) in sequence
-	* 
+	*
 	* @example label("myInterestingLabel")
 	*/
 	label(param) {
@@ -277,7 +277,7 @@ class expect {
 				}
 				output .= ", "
 			}
-			StringTrimRight, output, output, 2
+			output := subStr(output, 1, strLen(output) - 2)
 			return output
 		}
 		return param_value
