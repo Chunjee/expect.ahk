@@ -105,10 +105,10 @@ class expect {
 		}
 
 		; prepare
-		if (IsObject(param_actual)) {
+		if (isObject(param_actual)) {
 			param_actual := this._print(param_actual)
 		}
-		if (IsObject(param_expected)) {
+		if (isObject(param_expected)) {
 			param_expected := this._print(param_expected)
 		}
 
@@ -265,7 +265,7 @@ class expect {
 				} else {
 					output .= key . ":"
 				}
-				if (IsObject(value)) {
+				if (isObject(value)) {
 					output .= "[" . this._print(value) . "]"
 				} else if value is not Number
 				{
