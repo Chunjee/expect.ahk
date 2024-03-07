@@ -276,7 +276,7 @@ class expect {
 				}
 				output .= ", "
 			}
-			StringTrimRight, output, output, 2
+			output := subStr(output, 1, strLen(output) - 2)
 			return output
 		}
 		return param_value
