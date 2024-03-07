@@ -174,7 +174,7 @@ class expect {
 		this.groupVar := param_label
 		this.labelVar := ""
 		this.lastlabel := "_"
-		this._stdOut("# " param_label)
+		this._stdOut("# " this.groupVar)
 		return
 	}
 
@@ -183,7 +183,7 @@ class expect {
 	/**
 	* labels the following tests for logs and readability
 	* @param {string} param_label - A human readable label for the next test(s) in sequence
-	*
+	* 
 	* @example label("myInterestingLabel")
 	*/
 	label(param) {
@@ -239,7 +239,7 @@ class expect {
 		this.failTotal++
 		if (this.labelVar != this.lastlabel) {
 			this.lastlabel := this.labelVar
-			if (this.groupVar) {
+			if (this.groupVar != "") {
 				this.log.push("`n== " this.groupVar " - " this.labelVar " ==`n")
 			} else {
 				this.log.push("`n== " this.labelVar " ==`n")
@@ -252,13 +252,12 @@ class expect {
 		if (param_msg != "") {
 			this.log.push(param_msg "`n")
 		}
-		this.log.push("`n")
 	}
 
 
 
 	_print(param_value) {
-		if (IsObject(param_value)) {
+		if (isObject(param_value)) {
 			for key, value in param_value {
 				if key is not Number
 				{
@@ -277,7 +276,7 @@ class expect {
 				}
 				output .= ", "
 			}
-			output := subStr(output, 1, strLen(output) - 2)
+			StringTrimRight, output, output, 2
 			return output
 		}
 		return param_value
@@ -287,7 +286,7 @@ class expect {
 
 	_stdOut(output:="") {
 		try {
-			fileAppend, % "`n" output, *
+			fileAppend, % output, *
 		} catch error {
 			return false
 		}
