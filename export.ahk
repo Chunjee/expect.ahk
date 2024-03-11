@@ -121,6 +121,7 @@ class expect {
 		} else {
 			this._logTestFail(param_actual, param_expected, param_note)
 			return false
+			
 		}
 	}
 
@@ -321,7 +322,7 @@ class expect {
 		}
 		msgReport := this._buildReport() "`n"
 		for key, value in this.log {
-			msgReport .= msgReport "`n"
+			msgReport .= this.log[A_Index] "`n"
 		}
 		fileAppend, % msgReport, % logpath
 
