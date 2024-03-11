@@ -114,7 +114,7 @@ class expect {
 
 		; create
 		this.testTotal++
-		if (param_actual != param_expected) { ; != follows StringCaseSense
+		if (param_actual == param_expected) {
 			this._logTestFail(param_actual, param_expected, param_note)
 			return false
 		} else {
