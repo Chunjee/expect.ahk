@@ -115,12 +115,12 @@ class expect {
 		; create
 		this.testTotal++
 		if (param_actual == param_expected) {
-			this._logTestFail(param_actual, param_expected, param_note)
-			return false
-		} else {
 			this._stdOut("ok " this.testTotal)
 			this.successTotal++
 			return true
+		} else {
+			this._logTestFail(param_actual, param_expected, param_note)
+			return false
 		}
 	}
 
