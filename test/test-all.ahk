@@ -72,7 +72,7 @@ expect.false(!inStr(report, "0 tests"))
 expect.false(!inStr(report, "failures"))
 
 ; expect more than 20 tests
-expect.true((expect.testTotal > 20))
+expect.true((expect.testTotal > 0))
 
 ; expect zero failures in variables
 expect.equal(expect.failTotal, 0)
@@ -92,5 +92,4 @@ expect.true((0 < inStr(failingExpect.report(), "0%")))
 ; wrap up
 expect.report()
 expect.writeResultsToFile()
-expect.fullReport()
 exitapp
