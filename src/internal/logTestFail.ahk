@@ -11,10 +11,14 @@ _logTestFail(param_actual, param_expected, param_msg:="") {
 	if (this.labelVar != this.lastlabel) {
 		this.lastlabel := this.labelVar
 		if (this.groupVar) {
-			this.log.push("== " this.groupVar " - " this.labelVar " ==")
-		} else {
-			this.log.push("== " this.labelVar " ==")
+			this.log.push("## " this.groupVar "")
 		}
+		this.log.push("- Test Number: " this.failTotal "  ")
+		if (this.labelVar != "") {
+			this.log.push(this.labelVar "  ")
+		}
+		this.log.push("Expected: " param_expected "  ")
+		this.log.push("Actual: " param_actual "  ")
 	}
 	groupStr := ""
 	if (this.groupVar != "") {
@@ -27,5 +31,4 @@ _logTestFail(param_actual, param_expected, param_msg:="") {
 	msg .= "    Got: " param_actual "`n"
 	msg .= "    ..."
 	this._stdOut(msg)
-	this.log.push(msg)
 }
