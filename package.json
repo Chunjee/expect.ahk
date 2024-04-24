@@ -1,13 +1,22 @@
 {
 	"name": "expect.ahk",
-	"version": "0.1.1",
+	"version": "0.2.0",
 	"description": "expect.ahk is a testing package to perform and report on tests for AutoHotkey projects. It is Test Anything Protocol (TAP) compliant",
 	"main": "export.ahk",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/Chunjee/expect.ahk.git"
 	},
-	"dependencies": {},
+	"dependencies": { },
+	"devDependencies": {
+		"lodash": "^4.17.21",
+		"handlebars": "^4.7.8",
+		"parse-comments": "^1.0.0"
+	},
+	"scripts": {
+		"build-and-test": "node .\\build\\build.js && .\\test\\test-all.ahk",
+		"docs": "npx docsify serve"
+	},
 	"author": "Shawn Brooker",
 	"license": "MIT",
 	"keywords": [

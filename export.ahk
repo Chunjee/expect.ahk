@@ -10,7 +10,7 @@ class expect {
 		this.finalTrigger := false
 	}
 	/**
-	* checks if param_actual and param_expected inputs are the same or equal. The comparison is always case-sensitive.
+	* checks if `param_actual` and `param_expected` inputs are equal. The comparison is always case-sensitive.
 	* @param {number|string|object} param_actual - The actual value.
 	* @param {number|string|object} param_expected - The expected value.
 	* @param {string} param_note - (Optional) Additional notes for the test.
@@ -35,7 +35,7 @@ class expect {
 		return this.test(param_actual, param_expected, param_note)
 	}
 	/**
-	* checks if actual and expected inputs are NOT the same or equal. The comparison is always case-sensitive.
+	* checks if `param_actual` and `param_expected` inputs are NOT equal. The comparison is always case-sensitive.
 	* @param {number|string|object} param_actual - The actual value computed.
 	* @param {number|string|object} param_expected - The expected value.
 	* @param {string} param_note - Additional notes for the test (Optional).
@@ -69,6 +69,7 @@ class expect {
 	* @param {number|string|object} param_actual - The actual value computed.
 	* @param {number|string|object} param_expected - The expected value.
 	* @param {string} param_note - Additional notes for the test (Optional).
+	*
 	* @returns {boolean} Returns true if the values are equal, else false.
 	*/
 	test(param_actual:="_Missing_Parameter_", param_expected:="_Missing_Parameter_", param_note:="") {
@@ -94,7 +95,7 @@ class expect {
 		}
 	}
 	/**
-	* checks if actual value is true.
+	* checks if `param_actual` value is true.
 	* @param {number|string} param_actual - The actual value computed.
 	* @param {string} param_note - Additional notes for the test (Optional).
 	*
@@ -111,7 +112,7 @@ class expect {
 		return false
 	}
 	/**
-	* checks if actual input is false.
+	* checks if `param_actual` input is false.
 	* @param {number|string|object} param_actual - The actual value computed.
 	* @param {string} param_note - Additional notes for the test (Optional).
 	*
@@ -136,7 +137,7 @@ class expect {
 		return false
 	}
 	/**
-	* checks if actual is undefined (`""`).
+	* checks if `param_actual` is undefined (`""`).
 	* @param {number|string} param_actual - The actual value computed.
 	* @param {string} param_note - Additional notes for the test (Optional).
 	*
@@ -218,19 +219,37 @@ class expect {
 		if (this.labelVar != this.lastlabel) {
 			this.lastlabel := this.labelVar
 			if (this.groupVar) {
-				this.log.push("== " this.groupVar " - " this.labelVar " ==")
-			} else {
-				this.log.push("== " this.labelVar " ==")
+				this.log.push("")
+				this.log.push("## " this.groupVar "")
 			}
+			this.log.push("- Test Number: " this.failTotal "  ")
+			if (this.labelVar != "") {
+				this.log.push(this.labelVar "  ")
+			}
+			this.log.push("Expected: " param_expected "  ")
+			this.log.push("Actual: " param_actual "  ")
 		}
-		msg := "not ok " this.testTotal " - " this.labelVar "`n"
+		groupStr := ""
+		if (this.groupVar != "") {
+			groupStr := this.groupVar "; "
+		}
+		msg := "not ok " this.testTotal " - " groupStr this.labelVar "`n"
 		msg .= "    ---`n"
 		msg .= "    Expected: " param_expected "`n"
 		msg .= "    Got: " param_actual "`n"
 		msg .= "    ..."
 		this._stdOut(msg)
-		this.log.push(msg)
 	}
+	; # 2 tests completed with 0`% success (2 failures)
+	; - Test Number: 1  
+	; expect true for myCoolFunc  
+	; Expected: 1  
+	; Actual: 0
+	; ## This Group
+	; - Test Number: 2 
+	; expect true for myOtherFunc  
+	; Expected: 1  
+	; Actual: 0  
 	_print(param_value) {
 		if (isObject(param_value)) {
 			for key, value in param_value {
@@ -264,7 +283,7 @@ class expect {
 		return true
 	}
 	/**
-	* Writes the report to a file and optionally opens the file.
+	* Writes the report to a file.
 	* @param {string} param_filepath - The path of the file where the report will be written. If not provided, the default logResultPath will be used.
 	* @throws {exception} If there is an error writing the report to the disk.
 	*
@@ -272,7 +291,7 @@ class expect {
 	* 
 	* @example expect.writeResultsToFile(".\myLogFile.tap")
 	*/  
-	writeResultsToFile(param_filepath:=".\result.tests.log") {
+	writeResultsToFile(param_filepath:=".\results.test.log") {
 		if (A_IsCompiled) {
 			return 0
 		}
@@ -281,13 +300,15 @@ class expect {
 			param_filepath := A_WorkingDir subStr(param_filepath, 2)
 		}
 		; create
-		try {
-			fileDelete, % param_filepath
-		} catch {
-			; do nothing
+		if (inStr(param_filepath, "*") == 0) {
+			try {
+				fileDelete, % param_filepath
+			} catch {
+				; do nothing
+			}
 		}
-		msgReport := this._buildReport() "`n"
-		for key, value in this.logObj {
+		msgReport := "# " this._buildReport() "`n`n"
+		for key, value in this.log {
 			msgReport .= value "`n"
 		}
 		fileAppend, % msgReport, % param_filepath
@@ -332,7 +353,7 @@ class expect {
 		}
 		msgReport := this._buildReport()
 		if (this.failTotal > 0) {
-			msgReport .= "================================="
+			msgReport .= "`n==========================="
 			loop % this.log.Count() {
 				msgReport .= "`n" this.log[A_Index]
 			}
