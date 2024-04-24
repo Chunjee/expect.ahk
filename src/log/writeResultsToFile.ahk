@@ -7,7 +7,7 @@
 * 
 * @example expect.writeResultsToFile(".\myLogFile.tap")
 */  
-writeResultsToFile(param_filepath:=".\result.tests.log") {
+writeResultsToFile(param_filepath:=".\results.test.log") {
 	if (A_IsCompiled) {
 		return 0
 	}
@@ -17,13 +17,15 @@ writeResultsToFile(param_filepath:=".\result.tests.log") {
 	}
 
 	; create
-	try {
-		fileDelete, % param_filepath
-	} catch {
-		; do nothing
+	if (inStr(param_filepath, "*") == 0) {
+		try {
+			fileDelete, % param_filepath
+		} catch {
+			; do nothing
+		}
 	}
-	msgReport := this._buildReport() "`n"
-	for key, value in this.logObj {
+	msgReport := "# " this._buildReport() "`n`n"
+	for key, value in this.log {
 		msgReport .= value "`n"
 	}
 	fileAppend, % msgReport, % param_filepath

@@ -11,6 +11,7 @@ _logTestFail(param_actual, param_expected, param_msg:="") {
 	if (this.labelVar != this.lastlabel) {
 		this.lastlabel := this.labelVar
 		if (this.groupVar) {
+			this.log.push("")
 			this.log.push("## " this.groupVar "")
 		}
 		this.log.push("- Test Number: " this.failTotal "  ")
@@ -32,3 +33,16 @@ _logTestFail(param_actual, param_expected, param_msg:="") {
 	msg .= "    ..."
 	this._stdOut(msg)
 }
+
+; # 2 tests completed with 0`% success (2 failures)
+
+; - Test Number: 1  
+; expect true for myCoolFunc  
+; Expected: 1  
+; Actual: 0
+
+; ## This Group
+; - Test Number: 2 
+; expect true for myOtherFunc  
+; Expected: 1  
+; Actual: 0  

@@ -17,7 +17,7 @@ fullReport() {
 	}
 	msgReport := this._buildReport()
 	if (this.failTotal > 0) {
-		msgReport .= "================================="
+		msgReport .= "`n==========================="
 		loop % this.log.Count() {
 			msgReport .= "`n" this.log[A_Index]
 		}
