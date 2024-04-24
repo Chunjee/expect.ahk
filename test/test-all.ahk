@@ -7,6 +7,7 @@ SetBatchLines, -1
 
 expect := new expect()
 failingExpect := new expect()
+fileLogExpect := new expect()
 
 expect.group(".equal")
 expect.label("vars, arrays, objects")
@@ -89,7 +90,41 @@ expect.false(failingExpect.notEqual(1, 1))
 expect.label(".report")
 expect.true((0 < inStr(failingExpect.report(), "0%")))
 
+expect.label(".writeResultsToFile")
+expect.true((0 < inStr(failingExpect.writeResultsToFile(), "0%")))
+
+
+expectedOutputStr1 =
+(
+# 1 test completed with 0`% success (1 failure)
+
+- Test Number: 1  `nexpect true for myCoolFunc  `nExpected: 1  `nActual: 0  `n
+)
+fileLogExpect.true(false, "expect true for myCoolFunc")
+expect.equal(fileLogExpect.writeResultsToFile(), expectedOutputStr1)
+
+
+expectedOutputStr2 =
+(
+# 2 tests completed with 0`% success (2 failures)
+
+- Test Number: 1  `nexpect true for myCoolFunc  `nExpected: 1  `nActual: 0  `n
+## This Group
+- Test Number: 2  `nexpect true for myOtherFunc  `nExpected: 1  `nActual: 0  `n
+)
+fileLogExpect.group("This Group")
+fileLogExpect.true(false, "expect true for myOtherFunc")
+expect.equal(fileLogExpect.writeResultsToFile(), expectedOutputStr2)
+
+fileLogExpect.writeResultsToFile()
+
 ; wrap up
 expect.report()
-expect.writeResultsToFile()
+; expect.writeResultsToFile()
+expect.fullReport()
 exitapp
+
+; functions
+fn_removeNewlines(str) {
+	return strReplace(strReplace(str, "`r" , ""), "`n", "")
+}
