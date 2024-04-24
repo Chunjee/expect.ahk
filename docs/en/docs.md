@@ -1,24 +1,24 @@
-# 
+#
 # **Check methods**
 
 ## .equal
 > `expect.equal([1, 2, 3], [1, 2, 3])`
 
-checks if actual and expected inputs are the same or equal. The comparison is always case-sensitive.
-#### Aliases 
+checks if `param_actual` and `param_expected` inputs are equal. The comparison is always case-sensitive.
+#### Aliases
 `.test`
 
 
 #### Arguments
 | Argument       | Type         | Description  |
 | :------------- | :----------- | :----------- |
-| param_actual | number/string/object | The actual value computed. | 
-| param_expected | number/string/object | The expected value. | 
-| param_note | string | Additional notes for the test (optional). | 
+| param_actual | number/string/object | The actual value. |
+| param_expected | number/string/object | The expected value. |
+| param_note | string | (Optional) Additional notes for the test. |
 
 
 
-#### Returns 
+#### Returns
 (boolean): Returns true if the values are equal, else false.
 
 <!-- end of .equal -->
@@ -29,18 +29,18 @@ checks if actual and expected inputs are the same or equal. The comparison is al
 ## .notEqual
 > `expect.notEqual({ "a":1 }, { "a":false })`
 
-checks if actual and expected inputs are NOT the same or equal. The comparison is always case-sensitive.
+checks if `param_actual` and `param_expected` inputs are NOT equal. The comparison is always case-sensitive.
 
 
 #### Arguments
 | Argument       | Type         | Description  |
 | :------------- | :----------- | :----------- |
-| param_actual | number/string/object | The actual value computed. | 
-| param_expected | number/string/object | The expected value. | 
-| param_note | string | Additional notes for the test (optional). | 
+| param_actual | number/string/object | The actual value computed. |
+| param_expected | number/string/object | The expected value. |
+| param_note | string | Additional notes for the test (Optional). |
 
 
-#### Returns 
+#### Returns
 (boolean): Returns true if the values are different, else false.
 
 <!-- end of .notEqual -->
@@ -51,17 +51,17 @@ checks if actual and expected inputs are NOT the same or equal. The comparison i
 ## .true
 > `expect.true((1 == 1))`
 
-checks if actual value is true.
+checks if `param_actual` value is true.
 
 
 #### Arguments
 | Argument       | Type         | Description  |
 | :------------- | :----------- | :----------- |
-| param_actual | number/string | The actual value computed. | 
-| param_note | string | Additional notes for the test (optional). | 
+| param_actual | number/string | The actual value computed. |
+| param_note | string | Additional notes for the test (Optional). |
 
 
-#### Returns 
+#### Returns
 (boolean): Returns true if the values are different, else false.
 
 <!-- end of .true -->
@@ -72,17 +72,17 @@ checks if actual value is true.
 ## .false
 > `expect.false((99 < 3))`
 
-checks if actual input is false.
+checks if `param_actual` input is false.
 
 
 #### Arguments
 | Argument       | Type         | Description  |
 | :------------- | :----------- | :----------- |
-| param_actual | number/string/object | The actual value computed. | 
-| param_note | string | Additional notes for the test (optional). | 
+| param_actual | number/string/object | The actual value computed. |
+| param_note | string | Additional notes for the test (Optional). |
 
 
-#### Returns 
+#### Returns
 (boolean): returns true if the value is false, else false
 
 <!-- end of .false -->
@@ -93,17 +93,17 @@ checks if actual input is false.
 ## .undefined
 > `expect.undefined("")`
 
-checks if actual is undefined (`""`).
+checks if `param_actual` is undefined (`""`).
 
 
 #### Arguments
 | Argument       | Type         | Description  |
 | :------------- | :----------- | :----------- |
-| param_actual | number/string | The actual value computed. | 
-| param_note | string | Additional notes for the test (optional). | 
+| param_actual | number/string | The actual value computed. |
+| param_note | string | Additional notes for the test (Optional). |
 
 
-#### Returns 
+#### Returns
 (boolean): returns true if the value is `""`, else false
 
 <!-- end of .undefined -->
@@ -120,7 +120,7 @@ appends the label to a group of following tests for logs and readability
 #### Arguments
 | Argument       | Type         | Description  |
 | :------------- | :----------- | :----------- |
-| param_label | string | A human readable label prepend for the next test(s) in sequence | 
+| param_label | string | A human readable label prepend for the next test(s) in sequence |
 
 
 <!-- end of .group -->
@@ -137,7 +137,7 @@ labels the following tests for logs and readability
 #### Arguments
 | Argument       | Type         | Description  |
 | :------------- | :----------- | :----------- |
-| param_label | string | A human readable label for the next test(s) in sequence | 
+| param_label | string | A human readable label for the next test(s) in sequence |
 
 
 <!-- end of .label -->
@@ -148,20 +148,20 @@ labels the following tests for logs and readability
 ## .writeResultsToFile
 > `expect.writeResultsToFile(".\myLogFile.tap")`
 
-Writes the report to a file and optionally opens the file.
+Writes the report to a file.
 
 
 #### Arguments
 | Argument       | Type         | Description  |
 | :------------- | :----------- | :----------- |
-| param_filepath | string | The path of the file where the report will be written. If not provided, the default logResultPath will be used. | 
+| param_filepath | string | The path of the file where the report will be written. If not provided, the default logResultPath will be used. |
 
 
 
-#### Returns 
+#### Returns
 (string): The report that was written to the file.
 
-#### Exceptions 
+#### Exceptions
 (Throws exception): If there is an error writing the report to the disk.
 <!-- end of .writeResultsToFile -->
 
@@ -178,7 +178,7 @@ returns the full test results. This should be used with to integrate with Contin
 Does not accept any arguments.
 
 
-#### Returns 
+#### Returns
 (string): returns a string containing all the test results.
 
 <!-- end of .report -->
@@ -196,9 +196,7 @@ Uses msgbox to display the results of all tests with details of any failures
 Does not accept any arguments.
 
 
-#### Returns 
+#### Returns
 (string): The generated full report message.
 
 <!-- end of .fullReport -->
-
-

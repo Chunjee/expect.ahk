@@ -1,5 +1,5 @@
 /**
-* checks if actual and expected inputs are NOT the same or equal. The comparison is always case-sensitive.
+* checks if `param_actual` and `param_expected` inputs are NOT equal. The comparison is always case-sensitive.
 * @param {number|string|object} param_actual - The actual value computed.
 * @param {number|string|object} param_expected - The expected value.
 * @param {string} param_note - Additional notes for the test (Optional).

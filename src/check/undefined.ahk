@@ -1,5 +1,5 @@
 /**
-* checks if actual is undefined (`""`).
+* checks if `param_actual` is undefined (`""`).
 * @param {number|string} param_actual - The actual value computed.
 * @param {string} param_note - Additional notes for the test (Optional).
 *

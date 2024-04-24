@@ -1,5 +1,5 @@
 /**
-* Writes the report to a file and optionally opens the file.
+* Writes the report to a file.
 * @param {string} param_filepath - The path of the file where the report will be written. If not provided, the default logResultPath will be used.
 * @throws {exception} If there is an error writing the report to the disk.
 *

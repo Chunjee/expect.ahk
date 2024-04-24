@@ -1,5 +1,5 @@
 /**
-* checks if actual value is true.
+* checks if `param_actual` value is true.
 * @param {number|string} param_actual - The actual value computed.
 * @param {string} param_note - Additional notes for the test (Optional).
 *
