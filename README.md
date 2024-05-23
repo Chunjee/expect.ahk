@@ -1,15 +1,12 @@
 <div align="center">
 	<a href="https://github.com/Chunjee/expect.ahk">
-		<img src="https://raw.githubusercontent.com/Chunjee/expect.ahk/master/header.svg"/>
-	</a>
+		<img src="https://raw.githubusercontent.com/Chunjee/expect.ahk/master/header.svg"/></a>
 	<br>
 	<br>
 	<a href="https://npmjs.com/package/expect.ahk">
-		<img src="https://img.shields.io/npm/dm/expect.ahk?style=for-the-badge">
-	</a>
+		<img src="https://img.shields.io/npm/dm/expect.ahk?style=for-the-badge"></a>
 	<a href="https://chunjee.github.io/expect.ahk">
-		<img src="https://img.shields.io/badge/full-documentation-blue?style=for-the-badge">
-	</a>
+		<img src="https://img.shields.io/badge/full-documentation-blue?style=for-the-badge"></a>
 	<img src="https://img.shields.io/npm/l/expect.ahk?color=tan&style=for-the-badge">
 	<h3>
 		A Test Anything Protocol (TAP) compliant unit testing package for AutoHotkey
