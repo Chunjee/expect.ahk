@@ -4,7 +4,7 @@
 	<br>
 	<br>
 	<a href="https://npmjs.com/package/expect.ahk">
-		<img src="https://img.shields.io/npm/dm/expect.ahk?style=for-the-badge"></a>
+		<img src="https://img.shields.io/npm/dy/expect.ahk?style=for-the-badge"></a>
 	<a href="https://chunjee.github.io/expect.ahk">
 		<img src="https://img.shields.io/badge/full-documentation-blue?style=for-the-badge"></a>
 	<img src="https://img.shields.io/npm/l/expect.ahk?color=tan&style=for-the-badge">
